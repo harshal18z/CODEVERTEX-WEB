@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="shortcut icon" href="assets/codevertex-removebg.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit"><a href="response.html">Submit</a></button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <h1>Contact Us on Social Media</h1>
+        <div class="social-icons">
+            <a href="https://t.me/CODEVERTEX" class="social-icon facebook">Telegram</a>
+            <a href="https://twitter.com/CODEVERTEX08" class="social-icon twitter">X/Twitter</a>
+            <a href="https://www.instagram.com/code.vertexofficial/" class="social-icon instagram">Instagram</a>
+            <a href="https://www.linkedin.com/company/code-vertexx/about/?viewAsMember=true" class="social-icon linkedin">LinkedIn</a>
+        </div>
+    </div>
+
+    <script type="module">
+        document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // You can add your code here to handle form submission, e.g., sending data to a server.
+        alert("Form submitted!");
+        form.reset();
+    });
+});
+
+
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+  import { getdatabase, ref, set, get, } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAQatAjhX-vV5nA0L9D-dSJycrEkv2cm1Q",
+    authDomain: "app-592a6.firebaseapp.com",
+    projectId: "app-592a6",
+    storageBucket: "app-592a6.appspot.com",
+    messagingSenderId: "956145209866",
+    appId: "1:956145209866:web:46c2a8eb1cef2f1347c5f3"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  // get ref to database services 
+  const db = getDatabase(app);
+
+  document.getElementById("submit").addEventListener('click', function(e){
+    e.preventDefault();
+
+    set(ref(db, 'user/' + document.getElementById("name").value),
+    {
+
+     name: document.getElementById("name").value,
+     email: document.getElementById("email").value,
+     message: document.getElementById("message").value,
+
+    });
+     
+     alert("submitted sucessfully  !");
+
+
+  })
+    </script>
+
+</html>
+</body>
+</html>
+
